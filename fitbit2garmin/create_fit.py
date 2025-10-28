@@ -154,8 +154,8 @@ def create_fit(log_id: str):
     cal_map = {}
     if calories_available:
         try:
-            base_date = calorie_data["activities-calories"][0]["dateTime"] # type: ignore[index]
-            for entry in calorie_data["activities-calories-intraday"]["dataset"]: # type: ignore[index]
+            base_date = calorie_data["activities-calories"][0]["dateTime"]  # type: ignore[index]
+            for entry in calorie_data["activities-calories-intraday"]["dataset"]:  # type: ignore[index]
                 t = entry["time"]
                 dt = datetime.fromisoformat(f"{base_date}T{t}{tz_offset}")
                 cal_map[dt.replace(second=0, microsecond=0)] = entry["value"]
@@ -201,8 +201,8 @@ def create_fit(log_id: str):
     lap.total_moving_time = duration_s
     lap.total_distance = distance_m
     lap.total_calories = calories_total
-    lap.average_heart_rate = avg_hr # type: ignore[attr-defined]
-    lap.maximum_heart_rate = max_hr # type: ignore[attr-defined]
+    lap.average_heart_rate = avg_hr  # type: ignore[attr-defined]
+    lap.maximum_heart_rate = max_hr  # type: ignore[attr-defined]
     lap.min_heart_rate = min_hr
     lap.avg_speed = distance_m / duration_s
     lap.enhanced_avg_speed = distance_m / duration_s
@@ -223,8 +223,8 @@ def create_fit(log_id: str):
     sess.total_moving_time = duration_s
     sess.total_distance = distance_m
     sess.total_calories = calories_total
-    sess.average_heart_rate = avg_hr # type: ignore[attr-defined]
-    sess.maximum_heart_rate = max_hr # type: ignore[attr-defined]
+    sess.average_heart_rate = avg_hr  # type: ignore[attr-defined]
+    sess.maximum_heart_rate = max_hr  # type: ignore[attr-defined]
     sess.min_heart_rate = min_hr
     sess.avg_speed = distance_m / duration_s
     sess.enhanced_avg_speed = distance_m / duration_s

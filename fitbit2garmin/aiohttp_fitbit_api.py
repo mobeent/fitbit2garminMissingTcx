@@ -195,4 +195,4 @@ async def get_activity_calories(
                 async with session.get(fallback_url, headers=headers) as fallback_res:
                     if fallback_res.status == 200:
                         return await fallback_res.read()
-    return None # type: ignore[return-value]
+    return None  # type: ignore[return-value]
