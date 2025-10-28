@@ -61,7 +61,9 @@ async def create_activity_tcx(
     start_date: date,
     end_date: date,
 ):
-    await commands.create_activity_tcx_or_fit(cache_directory, directory, start_date, end_date, True)
+    await commands.create_activity_tcx_or_fit(
+        cache_directory, directory, start_date, end_date, True
+    )
 
 
 @cli.command(help="Create activities' fit")
@@ -91,7 +93,9 @@ async def create_activity_fit(
     start_date: date,
     end_date: date,
 ):
-    await commands.create_activity_tcx_or_fit(cache_directory, directory, start_date, end_date, False)
+    await commands.create_activity_tcx_or_fit(
+        cache_directory, directory, start_date, end_date, False
+    )
 
 
 def run() -> None:

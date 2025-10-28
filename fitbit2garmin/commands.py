@@ -109,9 +109,7 @@ async def create_activity_tcx_or_fit(
             heart_rate_url = activity.get("heartRateLink", "missing")
 
             # Create json file for activity
-            activity_file_path = (
-                tcxs_directory / f"{log_id}" / "exercise-activity.json"
-            )
+            activity_file_path = tcxs_directory / f"{log_id}" / "exercise-activity.json"
             if not activity_file_path.exists():
                 with activity_file_path.open("w") as fw:
                     json.dump(activity, fw)
@@ -145,7 +143,7 @@ async def create_activity_tcx_or_fit(
                             f"{progress} activity-calories-{log_id}",
                             auth_file_path,
                             aiohttp_fitbit_api.get_activity_calories,
-                            raise_for_status=False
+                            raise_for_status=False,
                         )
                         calories = await get_activity_calories(calories_url)
                         if calories != None:
@@ -158,5 +156,7 @@ async def create_activity_tcx_or_fit(
                 else:
                     create_fit.create_fit(log_id)
             else:
-                logging.info(f"{progress} Skipping exercise {log_id} for {activity["activityName"]}")
+                logging.info(
+                    f"{progress} Skipping exercise {log_id} for {activity.get('activityName', 'Empty')}"
+                )
                 input("Press Enter to continue...")

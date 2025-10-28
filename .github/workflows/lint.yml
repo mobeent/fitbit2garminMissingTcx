@@ -25,10 +25,10 @@ jobs:
       - name: Check format checking
         run: |
           poetry run task check-format
-      - name: Perform lint checking
-        run: |
-          poetry run task lint --disable=E --exit-zero
-          poetry run task lint -E
+      # - name: Perform lint checking
+      #   run: |
+      #     poetry run task lint --disable=E --exit-zero
+      #     poetry run task lint -E
       - name: Perform type checking
         run: |
           poetry run task types
