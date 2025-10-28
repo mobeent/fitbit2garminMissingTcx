@@ -161,8 +161,8 @@ for details.
 
 <!-- Links -->
 
-[start]: https://github.com/simonepri/fitbit2garmin#start-of-content
-[license]: https://github.com/simonepri/fitbit2garmin/tree/main/license
+[start]: https://github.com/mobeent/fitbit2garminMissingTcx#start-of-content
+[license]: https://github.com/mobeent/fitbit2garminMissingTcx/tree/main/license
 [fitbit2garmin]: https://github.com/simonepri/fitbit2garmin
 
 [garmin:connect]: https://connect.garmin.com/signin
