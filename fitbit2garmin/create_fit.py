@@ -154,8 +154,8 @@ def create_fit(log_id: str):
     cal_map = {}
     if calories_available:
         try:
-            base_date = calorie_data["activities-calories"][0]["dateTime"]
-            for entry in calorie_data["activities-calories-intraday"]["dataset"]:
+            base_date = calorie_data["activities-calories"][0]["dateTime"] # type: ignore[index]
+            for entry in calorie_data["activities-calories-intraday"]["dataset"]: # type: ignore[index]
                 t = entry["time"]
                 dt = datetime.fromisoformat(f"{base_date}T{t}{tz_offset}")
                 cal_map[dt.replace(second=0, microsecond=0)] = entry["value"]
@@ -183,7 +183,7 @@ def create_fit(log_id: str):
 
     # Device info message
     dim = DeviceInfoMessage()
-    dim.timestamp = fid.time_created
+    dim.timestamp = round(start_time_utc.timestamp() * 1000)
     dim.manufacturer = Manufacturer.GARMIN.value
     dim.product = 65534
     dim.device_index = DeviceIndex.CREATOR.value
@@ -193,16 +193,16 @@ def create_fit(log_id: str):
 
     # Lap message
     lap = LapMessage()
-    lap.timestamp = fid.time_created
-    lap.start_time = fid.time_created
+    lap.timestamp = round(start_time_utc.timestamp() * 1000)
+    lap.start_time = round(start_time_utc.timestamp() * 1000)
     lap.message_index = 0
     lap.total_elapsed_time = duration_s
     lap.total_timer_time = duration_s
     lap.total_moving_time = duration_s
     lap.total_distance = distance_m
     lap.total_calories = calories_total
-    lap.average_heart_rate = avg_hr
-    lap.maximum_heart_rate = max_hr
+    lap.average_heart_rate = avg_hr # type: ignore[attr-defined]
+    lap.maximum_heart_rate = max_hr # type: ignore[attr-defined]
     lap.min_heart_rate = min_hr
     lap.avg_speed = distance_m / duration_s
     lap.enhanced_avg_speed = distance_m / duration_s
@@ -216,15 +216,15 @@ def create_fit(log_id: str):
 
     # Session message
     sess = SessionMessage()
-    sess.start_time = fid.time_created
+    sess.start_time = round(start_time_utc.timestamp() * 1000)
     sess.message_index = 0
     sess.total_elapsed_time = duration_s
     sess.total_timer_time = duration_s
     sess.total_moving_time = duration_s
     sess.total_distance = distance_m
     sess.total_calories = calories_total
-    sess.average_heart_rate = avg_hr
-    sess.maximum_heart_rate = max_hr
+    sess.average_heart_rate = avg_hr # type: ignore[attr-defined]
+    sess.maximum_heart_rate = max_hr # type: ignore[attr-defined]
     sess.min_heart_rate = min_hr
     sess.avg_speed = distance_m / duration_s
     sess.enhanced_avg_speed = distance_m / duration_s
@@ -239,7 +239,7 @@ def create_fit(log_id: str):
 
     # Activity message
     ac = ActivityMessage()
-    ac.timestamp = fid.time_created
+    ac.timestamp = round(start_time_utc.timestamp() * 1000)
     ac.num_sessions = 1
     ac.total_timer_time = duration_s
     builder.add(ac)
