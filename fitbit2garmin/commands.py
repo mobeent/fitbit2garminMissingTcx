@@ -157,6 +157,6 @@ async def create_activity_tcx_or_fit(
                     create_fit.create_fit(log_id)
             else:
                 logging.info(
-                    f"{progress} Skipping exercise {log_id} for {activity.get("activityName", "Empty")}"
+                    f"{progress} Skipping exercise {log_id} for {activity.get('activityName', 'Empty')}"
                 )
                 input("Press Enter to continue...")
