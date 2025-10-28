@@ -40,7 +40,7 @@
 
 ## Synopsis
 
-This package is an extension/modification of the code found in the github repo: https://github.com/simonepri/fitbit2garmin
+This package is an extension/modification of the code found in the github repo [fitbit2garmin][fitbit2garmin]
 While that package works perfectly for weight, activity data and activities with GPS data
 it doesn't import data related to activities that only have heart rate data over time.
 
@@ -163,5 +163,6 @@ for details.
 
 [start]: https://github.com/simonepri/fitbit2garmin#start-of-content
 [license]: https://github.com/simonepri/fitbit2garmin/tree/main/license
+[fitbit2garmin]: https://github.com/simonepri/fitbit2garmin
 
 [garmin:connect]: https://connect.garmin.com/signin
