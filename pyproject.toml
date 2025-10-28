@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "fitbit2garmin"
+version = "0.1.0"
+description = "Downloads lifetime Fitbit data and exports it into the format supported by Garmin Connect data importer. This includes historical body composition data (weight, BMI, and fat percentage), activity data (calories burned, steps, distance, active minutes, and floors climbed), and individual GPS exercises (TCX)."
+authors = ["simonepri <simone.primarosa@gmail.com>"]
+license = "MIT"
+homepage = "https://github.com/simonepri/fitbit2garmin#readme"
+repository = "https://github.com/simonepri/fitbit2garmin"
+readme = "readme.md"
+keywords = ["fitbit", "garmin", "connect", "migration", "transfer", "export", "import", "historical", "lifetime", "timeline", "weight", "bmi", "fat", "calories", "steps", "distance", "active minutes", "floors", "activities", "gps", "tcx"]
+
+[tool.poetry.scripts]
+fitbit2garmin = 'fitbit2garmin.cli:run'
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.12.0"
+pylint = "^3.0.1"
+mypy = "^1.6.0"
+ufmt = "^2.3.0"
+types-python-dateutil = "^2.8.19.14"
+
+[tool.taskipy.tasks]
+lint = "python -m pylint fitbit2garmin -v --output-format colorized --disable logging-fstring-interpolation"
+types = "python -m mypy fitbit2garmin"
+format = "python -m ufmt format fitbit2garmin"
+check-format = "python -m ufmt check fitbit2garmin"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiohttp = "^3.8.6"
+click = "^8.1.7"
+python-dateutil = "^2.8.2"
+asyncio-throttle = "^1.0.2"
+annotated-types = "^0.6.0"
+fit-tool = "^0.9.13"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
