@@ -7,14 +7,21 @@ from datetime import datetime, timezone
 def create_fit(log_id: str):
     # Import builder / message classes from fit-tool
     from fit_tool.fit_file_builder import FitFileBuilder
-    from fit_tool.profile.messages.file_id_message import FileIdMessage
-    from fit_tool.profile.messages.file_creator_message import FileCreatorMessage
-    from fit_tool.profile.messages.lap_message import LapMessage
     from fit_tool.profile.messages.activity_message import ActivityMessage
     from fit_tool.profile.messages.device_info_message import DeviceInfoMessage
+    from fit_tool.profile.messages.file_creator_message import FileCreatorMessage
+    from fit_tool.profile.messages.file_id_message import FileIdMessage
+    from fit_tool.profile.messages.lap_message import LapMessage
     from fit_tool.profile.messages.record_message import RecordMessage
     from fit_tool.profile.messages.session_message import SessionMessage
-    from fit_tool.profile.profile_type import FileType, Sport, Manufacturer, SubSport, GarminProduct, DeviceIndex
+    from fit_tool.profile.profile_type import (
+        DeviceIndex,
+        FileType,
+        GarminProduct,
+        Manufacturer,
+        Sport,
+        SubSport,
+    )
 
     # === CONFIG ===
     HEART_RATE_FILE = f"f2g/{log_id}/exercise-heart-rate.json"
@@ -44,14 +51,37 @@ def create_fit(log_id: str):
 
     # Activities where distance is relevant
     DISTANCE_RELEVANT = {
-        "Run", "Walk", "Walking", "Hike", "Bike", "Biking", "Outdoor Bike",
-        "Treadmill", "Swim", "Swimming", "Sport", "Elliptical", "Aerobic Workout"
+        "Run",
+        "Walk",
+        "Walking",
+        "Hike",
+        "Bike",
+        "Biking",
+        "Outdoor Bike",
+        "Treadmill",
+        "Swim",
+        "Swimming",
+        "Sport",
+        "Elliptical",
+        "Aerobic Workout",
     }
 
     # Activities where elevation gain is relevant
     ELEVATION_RELEVANT = {
-        "Run", "Walk", "Walking", "Hike", "Bike", "Biking", "Outdoor Bike",
-        "Treadmill", "Elliptical", "Hiking", "Running", "Cycling", "Aerobic Workout", "Sport"
+        "Run",
+        "Walk",
+        "Walking",
+        "Hike",
+        "Bike",
+        "Biking",
+        "Outdoor Bike",
+        "Treadmill",
+        "Elliptical",
+        "Hiking",
+        "Running",
+        "Cycling",
+        "Aerobic Workout",
+        "Sport",
     }
 
     DEFAULT_STRIDE_LENGTH_M = 0.762
@@ -86,7 +116,9 @@ def create_fit(log_id: str):
             distance_km = (steps * DEFAULT_STRIDE_LENGTH_M) / 1000.0
             print(f"ℹ Estimated distance from {steps} steps: {distance_km:.3f} km")
         else:
-            print(f"⚠ No distance and no valid step estimation for '{activity.get('activityName')}'. Using 0 km.")
+            print(
+                f"⚠ No distance and no valid step estimation for '{activity.get('activityName')}'. Using 0 km."
+            )
     distance_m = distance_km * 1000.0
 
     # Elevation gain

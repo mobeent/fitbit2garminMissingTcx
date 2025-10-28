@@ -88,9 +88,7 @@ def get_authorization_headers(bearer_token: str) -> Mapping[str, str]:
 
 
 def get_custom_authorization_headers() -> Mapping[str, str]:
-    return {
-        "Authorization": f"Bearer <ENTER YOUR TOKEN HERE>"
-    }
+    return {"Authorization": f"Bearer <ENTER YOUR TOKEN HERE>"}
 
 
 # https://dev.fitbit.com/build/reference/web-api/activity/get-activity-log-list/
@@ -111,4 +109,3 @@ def get_activity_log_list_url(
 
 def get_activity_tcx_url(log_id: int, user: str = "-"):
     return f"{_API_BASE_URL}/{_API_VERSION}/user/{user}/activities/{log_id}.tcx"
-
